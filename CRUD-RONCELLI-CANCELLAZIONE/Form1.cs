@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
     public partial class Form1 : Form
     {
         public int RecordLength = 64;
-        public string FilePath = "prodotti.dat";
+        public string FilePath = "prodotti.dat"; //creazione variabile file
 
         public struct Prodotto
         {
@@ -80,25 +81,25 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
                 MessageBox.Show("Prodotto e prezzo modificato nel file");
             }
         }
-            private int Ricerca(string nome)
+        private int Ricerca(string nome)
+        {
+            int riga = 0;
+            using (StreamReader salva = File.OpenText("prodotti.dat"))
             {
-                int riga = 0;
-                using (StreamReader salva = File.OpenText("prodotti.dat"))
+                string lettore;
+                while ((lettore = salva.ReadLine()) != null)
                 {
-                    string lettore;
-                    while ((lettore = salva.ReadLine()) != null)
+                    string[] dati = lettore.Split(';');
+                    if (dati[3] == "0" && dati[0] == nome)
                     {
-                        string[] dati = lettore.Split(';');
-                        if (dati[3] == "0" && dati[0] == nome)
-                        {
-                            salva.Close();
-                            return riga;
-                        }
-                        riga++;
+                        salva.Close();
+                        return riga;
                     }
+                    riga++;
                 }
-                return -1;
             }
+            return -1;
+        }
 
         private int Ricercadarecu(string nome)
         {
@@ -120,7 +121,7 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
             return -1;
         }
         private void modificaprodottoprezzo_Click(object sender, EventArgs e)
-            {
+        {
             if (string.IsNullOrEmpty(search.Text))
             {
                 MessageBox.Show("Inserire il prodotto da cercare");
@@ -135,14 +136,14 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
             }
             else
             {
-                Modifica(newname.Text, double.Parse(newwprice.Text), FilePath,RecordLength);
+                Modifica(newname.Text, double.Parse(newwprice.Text), FilePath, RecordLength);
                 search.Clear();
                 newname.Clear();
                 newwprice.Clear();
             }
         }
 
-        public string[] ricercaprod(string nome)
+        public string[] ricercaprod(string nome)// funzione ricerca prodotto
         {
             int riga = 0;
             using (StreamReader sr = File.OpenText("prodotti.dat"))
@@ -162,7 +163,7 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
             return null;
         }
 
-        public void CancellazioneF(string percorso)
+        public void CancellazioneF(string percorso)// funzione cancellazione fisica
         {
             int indice = Ricerca(search.Text);
             if (string.IsNullOrEmpty(search.Text))
@@ -205,12 +206,12 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
             }
         }
 
-            private void cancellazioneF_Click(object sender, EventArgs e)
-            {
+        private void cancellazioneF_Click(object sender, EventArgs e)
+        {
             CancellazioneF(FilePath);
             search.Clear();
-            }
-        public void CancellaL(string FilePath, string nome, int lunghezza)
+        }
+        public void CancellaL(string FilePath, string nome, int lunghezza)// funzione cancellazione logica
         {
             List<string> righe = File.ReadAllLines(FilePath).ToList();
             int indice = Ricerca(search.Text);
@@ -234,11 +235,11 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
             }
         }
 
-        
 
 
-        private void cancellazioneL_Click(object sender, EventArgs e)
-            {
+
+        private void cancellazioneL_Click(object sender, EventArgs e)//
+        {
             CancellaL(FilePath, search.Text, RecordLength);
             search.Clear();
         }
@@ -274,24 +275,58 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
             }
         }
 
-        private void openF_Click(object sender, EventArgs e)
+        private void openF_Click(object sender, EventArgs e) //apri file
+        {
+            string Pfile = Path.Combine(Application.StartupPath, "prodotti.dat");
+            if (File.Exists(Pfile))
             {
-                string Pfile = Path.Combine(Application.StartupPath, "prodotti.dat");
-                if (File.Exists(Pfile))
-                {
-                    System.Diagnostics.Process.Start(Pfile);
-                }
-                else
-                {
-                    MessageBox.Show("Il file non esiste.");
-                }
+                System.Diagnostics.Process.Start(Pfile);
             }
+            else
+            {
+                MessageBox.Show("Il file non esiste.");
+            }
+        }
 
-            private void RESET_Click(object sender, EventArgs e) //resetta il file "prodotti.dat"
-            {
-                File.WriteAllText(FilePath, string.Empty);
+        private void RESET_Click(object sender, EventArgs e) //resetta il file "prodotti.dat"
+        {
+            File.WriteAllText(FilePath, string.Empty);
             MessageBox.Show("File resettato");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+       
+        public void Visualizza(string FilePath)
+        {
+            string lettura;
+            StreamReader reader = new StreamReader(FilePath);
+            lettura = reader.ReadLine();   
+            LISTAP.Items.Clear();
+            while (lettura != null)
+            {
+                string[] dati = lettura.Split(';');
+                if (dati[3] == "0")
+                {
+                    LISTAP.Items.Add($"{dati[0]},{dati[1]}, {dati[2]},{dati[3]}");
+                    lettura = reader.ReadLine();
+                }
+                
+                else{ 
+                    LISTAP.Items.Add("");
+                    lettura = reader.ReadLine();
+
+                }
+               
             }
-        
+            reader.Close();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Visualizza(FilePath);
+
+        }
     }
 }

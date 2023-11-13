@@ -180,60 +180,55 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
             return null;
         }
 
-        // Funzione che gestisce la cancellazione fisica di un prodotto
+        // Funzione che gestisce la cancellazione fisica di un prodotto nel file specificato dal percorso.
         public void CancellazioneFisica(string percorso)
         {
-            int indice = Ricerca(search.Text);
+            int indice = Ricerca(search.Text); // Ottiene l'indice del prodotto da cancellare
 
-            if (string.IsNullOrEmpty(search.Text))
+            if (string.IsNullOrEmpty(search.Text)) // Verifica se il campo di ricerca è vuoto
             {
-                MessageBox.Show("Inserire un prodotto");
-                return;
+                MessageBox.Show("Inserire un prodotto"); // Mostra un messaggio di avviso
+                return; // Esce dalla funzione
             }
-            else if (indice == -1)
+            else if (indice == -1) // Verifica se il prodotto non è stato trovato
             {
-                MessageBox.Show("Il prodotto non esiste");
-                return;
+                MessageBox.Show("Il prodotto non esiste"); // Mostra un messaggio di avviso
+                return; // Esce dalla funzione
             }
 
-            List<string> righe = File.ReadAllLines(FilePath).ToList();
-            righe.RemoveAt(indice);
-            File.WriteAllLines(FilePath, righe);
+            List<string> righe = File.ReadAllLines(FilePath).ToList(); // Legge tutte le righe del file e le converte in una lista
+            righe.RemoveAt(indice); // Rimuove la riga corrispondente al prodotto da cancellare
+            File.WriteAllLines(FilePath, righe); // Scrive tutte le righe aggiornate nel file
 
-            MessageBox.Show("Eliminato");
+            MessageBox.Show("Eliminato"); // Mostra un messaggio di conferma
         }
 
-        // Gestisce il click sul pulsante "Cancellazione Fisica"
-        private void cancellazioneF_Click(object sender, EventArgs e)
-        {
-            CancellazioneFisica(FilePath);
-            search.Clear();
-        }
 
-        // Funzione che gestisce la cancellazione logica di un prodotto
+        // Funzione che gestisce la cancellazione logica di un prodotto nel file specificato dal percorso.
         public void CancellaLogica(string FilePath, string nome, int lunghezza)
         {
-            List<string> righe = File.ReadAllLines(FilePath).ToList();
-            int indice = Ricerca(search.Text);
+            List<string> righe = File.ReadAllLines(FilePath).ToList(); // Legge tutte le righe del file e le converte in una lista
+            int indice = Ricerca(search.Text); // Ottiene l'indice del prodotto da cancellare logicamente
 
-            if (indice != -1)
+            if (indice != -1) // Verifica se il prodotto è stato trovato
             {
-                string[] prodotto = righe[indice].Split(';');
+                string[] prodotto = righe[indice].Split(';'); // Splitta la riga del prodotto in un array di stringhe
                 righe[indice] = $"{prodotto[0]};{prodotto[1]};{prodotto[2]};1;".PadRight(RecordLength - 4) + "##";
 
-                // Aggiungi eventuali spazi bianchi alla fine della riga se necessario
+                // Aggiunge eventuali spazi bianchi alla fine della riga se necessario
                 righe[indice] = righe[indice].PadRight(RecordLength, ' ');
 
-                // Ora, scrivi le righe modificate nel file
+                // Scrive le righe modificate nel file
                 File.WriteAllLines(FilePath, righe);
 
-                MessageBox.Show("Prodotto cancellato logicamente");
+                MessageBox.Show("Prodotto cancellato logicamente"); // Mostra un messaggio di conferma
             }
             else
             {
-                MessageBox.Show("Il prodotto non esiste");
+                MessageBox.Show("Il prodotto non esiste"); // Mostra un messaggio di avviso
             }
         }
+
 
         // Gestisce il click sul pulsante "Cancellazione Logica"
         private void cancellazioneL_Click(object sender, EventArgs e)
@@ -242,27 +237,39 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
             search.Clear();
         }
 
-        // Gestisce il click sul pulsante "Recupera Fisicamente"
+        // Gestisce l'evento di clic sul pulsante per il recupero logico di un prodotto.
         private void recuperaFF_Click(object sender, EventArgs e)
         {
+            // Verifica se la casella di ricerca è vuota o se il prodotto non esiste logicamente
             if (string.IsNullOrEmpty(search.Text) || (Ricercadarecu(search.Text) == -1))
             {
-                MessageBox.Show("Inserire un prodotto o il prodotto non esiste");
-                return;
+                MessageBox.Show("Inserire un prodotto o il prodotto non esiste"); // Mostra un messaggio di avviso
+                return; // Esce dalla funzione
             }
-            else if (indice >= 0)
+            else if (indice >= 0) // Controlla se l'indice è valido (questa condizione sembra sempre vera)
             {
-                string[] prodotto = ricercaprod(search.Text);
+                string[] prodotto = ricercaprod(search.Text); // Ottiene i dati del prodotto dalla funzione ricercaprod
                 string line;
+
+                // Apre il file in modalità scrittura binaria
                 var salva = new FileStream(FilePath, FileMode.Open, FileAccess.Write);
                 BinaryWriter scrivi = new BinaryWriter(salva);
+
+                // Sposta il puntatore nel file alla posizione del record del prodotto da recuperare logicamente
                 salva.Seek(RecordLength * indice, SeekOrigin.Begin);
+
+                // Costruisce una nuova riga con il prodotto recuperato logicamente
                 line = $"{prodotto[0]};{prodotto[1]};{prodotto[3]};0;".PadRight(RecordLength - 4) + "##";
+
+                // Converte la riga in un array di byte e scrive nel file
                 byte[] bytes = Encoding.UTF8.GetBytes(line);
                 scrivi.Write(bytes, 0, bytes.Length);
+
+                // Chiude gli stream
                 scrivi.Close();
                 salva.Close();
-                MessageBox.Show("Prodotto recuperato logicamente");
+
+                MessageBox.Show("Prodotto recuperato logicamente"); // Mostra un messaggio di conferma
             }
         }
 
@@ -321,6 +328,11 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
         private void button1_Click(object sender, EventArgs e)
         {
             Visualizza(FilePath);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

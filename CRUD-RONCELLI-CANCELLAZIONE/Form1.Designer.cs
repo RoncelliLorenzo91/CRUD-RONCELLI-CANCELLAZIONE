@@ -52,10 +52,9 @@
             // Aggiungi
             // 
             this.Aggiungi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Aggiungi.Location = new System.Drawing.Point(461, 23);
-            this.Aggiungi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Aggiungi.Location = new System.Drawing.Point(245, 19);
             this.Aggiungi.Name = "Aggiungi";
-            this.Aggiungi.Size = new System.Drawing.Size(168, 75);
+            this.Aggiungi.Size = new System.Drawing.Size(312, 71);
             this.Aggiungi.TabIndex = 1;
             this.Aggiungi.Text = "Aggiungi su file";
             this.Aggiungi.UseVisualStyleBackColor = true;
@@ -64,61 +63,54 @@
             // modificaprodottoprezzo
             // 
             this.modificaprodottoprezzo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.modificaprodottoprezzo.Location = new System.Drawing.Point(327, 116);
-            this.modificaprodottoprezzo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modificaprodottoprezzo.Location = new System.Drawing.Point(245, 94);
             this.modificaprodottoprezzo.Name = "modificaprodottoprezzo";
-            this.modificaprodottoprezzo.Size = new System.Drawing.Size(168, 80);
+            this.modificaprodottoprezzo.Size = new System.Drawing.Size(145, 77);
             this.modificaprodottoprezzo.TabIndex = 2;
-            this.modificaprodottoprezzo.Text = "Modifica il prodotto e prezzo su file";
+            this.modificaprodottoprezzo.Text = "Modifica il prodotto e prezzo nel file";
             this.modificaprodottoprezzo.UseVisualStyleBackColor = true;
             this.modificaprodottoprezzo.Click += new System.EventHandler(this.modificaprodottoprezzo_Click);
             // 
             // nome
             // 
-            this.nome.Location = new System.Drawing.Point(59, 65);
-            this.nome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nome.Location = new System.Drawing.Point(44, 70);
             this.nome.Name = "nome";
-            this.nome.Size = new System.Drawing.Size(201, 22);
+            this.nome.Size = new System.Drawing.Size(152, 20);
             this.nome.TabIndex = 12;
             // 
             // prezzo
             // 
-            this.prezzo.Location = new System.Drawing.Point(59, 186);
-            this.prezzo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.prezzo.Location = new System.Drawing.Point(44, 151);
             this.prezzo.Name = "prezzo";
-            this.prezzo.Size = new System.Drawing.Size(201, 22);
+            this.prezzo.Size = new System.Drawing.Size(152, 20);
             this.prezzo.TabIndex = 13;
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(59, 289);
-            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.search.Location = new System.Drawing.Point(44, 235);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(201, 22);
+            this.search.Size = new System.Drawing.Size(152, 20);
             this.search.TabIndex = 14;
             // 
             // newname
             // 
-            this.newname.Location = new System.Drawing.Point(59, 446);
-            this.newname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.newname.Location = new System.Drawing.Point(44, 362);
             this.newname.Name = "newname";
-            this.newname.Size = new System.Drawing.Size(201, 22);
+            this.newname.Size = new System.Drawing.Size(152, 20);
             this.newname.TabIndex = 15;
             // 
             // newwprice
             // 
-            this.newwprice.Location = new System.Drawing.Point(59, 540);
-            this.newwprice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.newwprice.Location = new System.Drawing.Point(44, 439);
             this.newwprice.Name = "newwprice";
-            this.newwprice.Size = new System.Drawing.Size(201, 22);
+            this.newwprice.Size = new System.Drawing.Size(152, 20);
             this.newwprice.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label1.Location = new System.Drawing.Point(108, 37);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label1.Location = new System.Drawing.Point(78, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 24);
             this.label1.TabIndex = 18;
@@ -127,9 +119,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label2.Location = new System.Drawing.Point(137, 155);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label2.Location = new System.Drawing.Point(90, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 24);
             this.label2.TabIndex = 19;
@@ -138,20 +129,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label3.Location = new System.Drawing.Point(39, 263);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label3.Location = new System.Drawing.Point(10, 204);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(260, 24);
+            this.label3.Size = new System.Drawing.Size(218, 20);
             this.label3.TabIndex = 20;
             this.label3.Text = "inserisci il prodotto da cercare";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label4.Location = new System.Drawing.Point(55, 417);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label4.Location = new System.Drawing.Point(25, 322);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(203, 24);
             this.label4.TabIndex = 21;
@@ -160,9 +149,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label6.Location = new System.Drawing.Point(55, 514);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label6.Location = new System.Drawing.Point(17, 406);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(211, 24);
             this.label6.TabIndex = 23;
@@ -171,10 +159,9 @@
             // cancellazioneL
             // 
             this.cancellazioneL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.cancellazioneL.Location = new System.Drawing.Point(324, 213);
-            this.cancellazioneL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancellazioneL.Location = new System.Drawing.Point(243, 173);
             this.cancellazioneL.Name = "cancellazioneL";
-            this.cancellazioneL.Size = new System.Drawing.Size(171, 78);
+            this.cancellazioneL.Size = new System.Drawing.Size(147, 82);
             this.cancellazioneL.TabIndex = 24;
             this.cancellazioneL.Text = "Cancellazione logica file";
             this.cancellazioneL.UseVisualStyleBackColor = true;
@@ -183,10 +170,9 @@
             // cancellazioneF
             // 
             this.cancellazioneF.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.cancellazioneF.Location = new System.Drawing.Point(540, 118);
-            this.cancellazioneF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancellazioneF.Location = new System.Drawing.Point(405, 96);
             this.cancellazioneF.Name = "cancellazioneF";
-            this.cancellazioneF.Size = new System.Drawing.Size(169, 78);
+            this.cancellazioneF.Size = new System.Drawing.Size(152, 75);
             this.cancellazioneF.TabIndex = 25;
             this.cancellazioneF.Text = "Cancellazione fisica file";
             this.cancellazioneF.UseVisualStyleBackColor = true;
@@ -195,10 +181,10 @@
             // recuperaFF
             // 
             this.recuperaFF.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.recuperaFF.Location = new System.Drawing.Point(324, 320);
-            this.recuperaFF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.recuperaFF.Location = new System.Drawing.Point(243, 260);
+            this.recuperaFF.Margin = new System.Windows.Forms.Padding(2);
             this.recuperaFF.Name = "recuperaFF";
-            this.recuperaFF.Size = new System.Drawing.Size(167, 71);
+            this.recuperaFF.Size = new System.Drawing.Size(147, 97);
             this.recuperaFF.TabIndex = 26;
             this.recuperaFF.Text = "Recupera (canc.logica)";
             this.recuperaFF.UseVisualStyleBackColor = true;
@@ -207,10 +193,10 @@
             // openF
             // 
             this.openF.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.openF.Location = new System.Drawing.Point(540, 217);
-            this.openF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.openF.Location = new System.Drawing.Point(405, 176);
+            this.openF.Margin = new System.Windows.Forms.Padding(2);
             this.openF.Name = "openF";
-            this.openF.Size = new System.Drawing.Size(169, 74);
+            this.openF.Size = new System.Drawing.Size(152, 80);
             this.openF.TabIndex = 27;
             this.openF.Text = "Apri file";
             this.openF.UseVisualStyleBackColor = true;
@@ -219,10 +205,10 @@
             // RESET
             // 
             this.RESET.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.RESET.Location = new System.Drawing.Point(539, 320);
-            this.RESET.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RESET.Location = new System.Drawing.Point(404, 260);
+            this.RESET.Margin = new System.Windows.Forms.Padding(2);
             this.RESET.Name = "RESET";
-            this.RESET.Size = new System.Drawing.Size(171, 70);
+            this.RESET.Size = new System.Drawing.Size(153, 97);
             this.RESET.TabIndex = 28;
             this.RESET.Text = "Reset";
             this.RESET.UseVisualStyleBackColor = true;
@@ -231,10 +217,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.button1.Location = new System.Drawing.Point(436, 417);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(245, 362);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(208, 71);
+            this.button1.Size = new System.Drawing.Size(312, 114);
             this.button1.TabIndex = 29;
             this.button1.Text = "Visualizza";
             this.button1.UseVisualStyleBackColor = true;
@@ -243,18 +228,16 @@
             // LISTAP
             // 
             this.LISTAP.FormattingEnabled = true;
-            this.LISTAP.ItemHeight = 16;
-            this.LISTAP.Location = new System.Drawing.Point(832, 95);
-            this.LISTAP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LISTAP.Location = new System.Drawing.Point(575, 19);
             this.LISTAP.Name = "LISTAP";
-            this.LISTAP.Size = new System.Drawing.Size(404, 468);
+            this.LISTAP.Size = new System.Drawing.Size(381, 524);
             this.LISTAP.TabIndex = 30;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1291, 709);
+            this.ClientSize = new System.Drawing.Size(968, 576);
             this.Controls.Add(this.LISTAP);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.RESET);
@@ -274,7 +257,6 @@
             this.Controls.Add(this.nome);
             this.Controls.Add(this.modificaprodottoprezzo);
             this.Controls.Add(this.Aggiungi);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -240,15 +240,21 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
         // Gestisce l'evento di clic sul pulsante per il recupero logico di un prodotto.
         private void recuperaFF_Click(object sender, EventArgs e)
         {
+            int indice = Ricercadarecu(search.Text);
             // Verifica se la casella di ricerca è vuota o se il prodotto non esiste logicamente
-            if (string.IsNullOrEmpty(search.Text) || (Ricercadarecu(search.Text) == -1))
+            if (string.IsNullOrEmpty(search.Text))
             {
-                MessageBox.Show("Inserire un prodotto o il prodotto non esiste"); // Mostra un messaggio di avviso
-                return; // Esce dalla funzione
+                MessageBox.Show("Inserire un prodotto");
+                return;
             }
+            else if (indice == -1)
+            {
+                MessageBox.Show("Il prodotto non esiste");
+            }
+
             else if (indice >= 0) // Controlla se l'indice è valido (questa condizione sembra sempre vera)
             {
-                string[] prodotto = ricercaprod(search.Text); // Ottiene i dati del prodotto dalla funzione ricercaprod
+                string[] prodotto = ricercaprod(search.Text);// Ottiene i dati del prodotto dalla funzione ricercaprod
                 string line;
 
                 // Apre il file in modalità scrittura binaria
@@ -268,8 +274,7 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
                 // Chiude gli stream
                 scrivi.Close();
                 salva.Close();
-
-                MessageBox.Show("Prodotto recuperato logicamente"); // Mostra un messaggio di conferma
+                MessageBox.Show("Prodotto recuperato logicamente");
             }
         }
 
@@ -334,5 +339,13 @@ namespace CRUD_RONCELLI_CANCELLAZIONE
         {
 
         }
+
+        private void cancellazioneF_Click(object sender, EventArgs e)// gestisce il click sul pulsante "cancellazione fisica file"
+        {
+            CancellazioneFisica(FilePath);
+            search.Clear();
+        }
+
+        
     }
 }
